@@ -5,4 +5,4 @@ gem 'json'
 gem 'pg'
 gem 'activerecord'
 gem 'carrierwave'
-
+gem 'bcrypt'
