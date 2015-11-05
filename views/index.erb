@@ -1,11 +1,15 @@
 <div class="formcontainer">
   <div id="inner_cont">
-  <h1 id="img_text">Makeover Your Wardrobe for Better Life</h1>
-    <form action="" method="">
-      <button class="index_but" id="index_signup">SIGN UP</button>
-      <button class="index_but" id="index_login">LOG IN</button>
-    </form>
-  </div>
+   <h1 id="img_text">Makeover Your Wardrobe for Better Life</h1>
+   <div id="index_btn">
+    <% if log_in? %>
+    <a href="/wardrobe" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>Better Life Here</a>
+   <% else%>
+    <a href="/signin" class="btn btn-default btn-lg" id="log_in">Log In</a>
+    <a href="/regi" class="btn btn-default btn-lg">Sign Up</a>
+   <% end%> 
+  </div> 
+ </div>
 </div>
 <div class="cover">
 <img class="cover" src="http://img.allw.mn/lifestyle/thumbs/30/165.jpg" alt="">

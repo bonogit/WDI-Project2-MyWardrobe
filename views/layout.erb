@@ -19,18 +19,32 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">MY WARDROBE LOGO</a>
-    </div>
+       <div id="the_logo">
+        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-queen" aria-hidden="true"></span>MY WARDROBE </a>
+       </div>
+        
+      </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/wardrobe">MY WARDROBE <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="/wardrobe">WARDROBE MAKEOVER<span class="sr-only">(current)</span></a></li>
         <li><a href="/addgarment/form">NEW GARMENT</a></li>
       </ul>
+<% if log_in? %>
+ <ul class="nav navbar-nav navbar-right">
+        <li>welcome: <%= current_user.username%></li>
+      <form action="/session" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <li ><button class="btn btn-default" style="width: 70px; height:25px; font-size:10px;">LOG OUT</button> </li>
+      </form>    
+  </ul>
+<% else%>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">SING UP</a></li>
-        <li><a href="#">LOG IN</a></li>
+        <li><a href="/signin">LOG IN</a></li>
+        <li><a href="/regi">SIGN UP</a></li>
       </ul>
+<% end%>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -38,6 +52,6 @@
 
   <%= yield %>
 
- <script src="/javascripts/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ <script src="/javascripts/bootstrap.min.js"></script>
 </body>

@@ -19,9 +19,13 @@ helpers do
     User.find_by(id: session[:user_id])
   end
 
-  def logged_in?
+  def log_in?
     !!current_user
   end
+end
+# close database connection after session
+after do
+ActiveRecord::Base.connection.close
 end
 
 get '/' do
@@ -29,30 +33,32 @@ get '/' do
 end
 # show the whole wardrobe
 get '/wardrobe' do
+  # redirect to '/signin' unless log_in?
   @category = Category.all
-  
   if params[:category_id].nil? || params[:category_id].empty?
-     @garments = Garment.all
+     @garments = Garment.where(user_id: current_user.id)
   else
-     @garments = Garment.where(category_id: params[:category_id])
+     @garments = Garment.where(category_id: params[:category_id], user_id: current_user.id)
   end
-
   erb :wardrobe
 end
 # show one garment
 get '/showgarment/:id' do
+  # redirect to '/signin' unless log_in?
   @garment = Garment.find(params[:id])
   erb :showgarment
 end
 
 # show update page
 get '/updategarment/showedit/:id' do
+    # redirect to '/signin' unless log_in?
   @garment = Garment.find(params[:id])
   erb :updategarment
 end
 
 put '/updategarment/:id' do
   @gar = Garment.find params[:id]
+  @gar.description = params[:description]
   @gar.location = params[:location]
   @gar.brand = params[:brand]
   @gar.size = params[:size]
@@ -62,11 +68,13 @@ put '/updategarment/:id' do
   @gar.buy_date = params[:buy_date]
   @gar.sold_value = params[:sold_value]
   @gar.sold_currency = params[:sold_currency]
+  @gar.image = params[:update_image]
   @gar.save
  redirect to '/wardrobe'
 end
 
 # getting the add new form
+  # redirect to '/signin' unless log_in?
 get '/addgarment/form' do
 erb :addgarment
 end
@@ -83,6 +91,9 @@ post '/addgarment' do
 @addgarment.buy_date = params[:buy_date]
 @addgarment.sold_value = params[:sold_value]
 @addgarment.sold_currency = params[:sold_currency]
+@addgarment.record_date = Date.today
+@addgarment.user_id = current_user.id
+@addgarment.image = params[:update_image]
 @addgarment.save
 redirect to '/wardrobe'
 end
@@ -92,11 +103,38 @@ Garment.find(params[:id]).destroy
 redirect to '/wardrobe'
 end
 
+# get sign up form
 get '/regi' do
   erb :regi
 end
-
+# get sign in form
 get '/signin' do
   erb :signin
+end
+
+# creating log in session
+post '/session' do
+  user =User.find_by(username: params[:username])
+  # binding.pry
+  if user && user.authenticate(params[:password])
+    session[:user_id] = user.id
+    redirect to '/wardrobe'
+  else
+    redirect to '/signin'
+  end
+end
+
+post '/session/newuser' do
+   @newuser = User.new
+   @newuser.username = params[:user]
+   @newuser.email = params[:email]
+   @newuser.password = params[:password]
+   @newuser.save
+   redirect to '/'
+end
+
+delete '/session' do
+  session[:user_id] = nil
+  redirect to '/'
 end
 

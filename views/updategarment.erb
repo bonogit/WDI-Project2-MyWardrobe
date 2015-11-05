@@ -1,45 +1,64 @@
 <div class="showgarment_container">
-
-  <div id="showgarment_img">
+ 
+  <form action="/updategarment/<%= @garment.id%>" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="_method" value="put">
+<div id="showgarment_img">
   <img src="<%= @garment.image_url%>" style="width: 480px; height: 480px;" class="img-thumbnail">
+  <div id="multi_img">
+     <div id="img_smallshow" >
+      <img src="<%= @garment.image_url%>" style="width: 100px; height: 100px;" class="img-thumbnail" >
+     </div>
+     <div id="imageupload">
+     </div>
   </div>
-
+</div>
   <div id="showgarment_content">
     <div class="panel panel-default" id="showgarment_details">
   <!-- Default panel contents -->
     <div class="panel-heading" style="font-size: 18px; "><%= @garment.garment_name.capitalize%></div>
-    <div class="panel-body">
-    <p>SOME DESCRIPTION UPDATE PAGE</p>
-    </div>
   <!-- List group -->
-  <form action="/updategarment/<%= @garment.id%>" method="post">
-  <input type="hidden" name="_method" value="put">
-  <ul class="list-group">
-    <li class="list-group-item">Location: <input type="text" name="location" value="<%= @garment.location%>"></li>
-    <li class="list-group-item">Brand:  <input type="text" name="brand" value="<%= @garment.brand%>"></li>
-    <li class="list-group-item">Size:  <input type="text" name="size" value="<%= @garment.size%>"></li>
-    <li class="list-group-item">Status:  <input type="text" name="status" value="<%= @garment.status%>"></li>
-    <li class="list-group-item">Buy in:  <input type="text" name="buy_value" value="<%= @garment.buy_value%>"></li>   
-    <li class="list-group-item">Cerrency:  <input type="text" name="buy_currency" value="<%= @garment.buy_currency%>"></li>
-    <li class="list-group-item">Date: <input type="text" name="buy_date" value="<%= @garment.buy_date%>"></li>
-    <li class="list-group-item">Sold on:  <input type="text" name="sold_value" value="<%= @garment.sold_value%>"></li>   
-  <li class="list-group-item">Currency:  <input type="text" name="sold_currency" value="<%= @garment.sold_currency%>"></li>
-  </ul>
 
+  <ul class="list-group">
+    <li class="list-group-item"><label class="col-sm-2 control-label">Description: 
+    </label><input type="text" name="description" value="<%= @garment.description
+    %>"></li>
+    <li class="list-group-item"><label class="col-sm-2 control-label">Location: 
+    </label> <input type="text" name="location" value="<%= @garment.location%>"></li>
+    <li class="list-group-item"><label class="col-sm-2 control-label">Brand: 
+    </label><input type="text" name="brand" value="<%= @garment.brand%>"></li>
+    <li class="list-group-item"><label class="col-sm-2 control-label">Size: 
+    </label> <input type="text" name="size" value="<%= @garment.size%>"></li>
+    <li class="list-group-item"><label class="col-sm-2 control-label">Status: 
+    </label><input type="text" name="status" value="<%= @garment.status%>"></li>
+    <li class="list-group-item"><label class="col-sm-2 control-label">Buy in: 
+    </label><input type="text" name="buy_value" value="<%= @garment.buy_value%>"></li>   
+    <li class="list-group-item"><label class="col-sm-2 control-label">Currency: 
+    </label><input type="text" name="buy_currency" value="<%= @garment.buy_currency%>"></li>
+    <li class="list-group-item"><label class="col-sm-2 control-label">Date: 
+    </label><input type="text" name="buy_date" value="<%= @garment.buy_date%>"></li>
+    <li class="list-group-item"><label class="col-sm-2 control-label">Sold on:
+    </label><input type="text" name="sold_value" value="<%= @garment.sold_value%>"></li>   
+  <li class="list-group-item"><label class="col-sm-2 control-label">Currency: 
+    </label><input type="text" name="sold_currency" value="<%= @garment.sold_currency%>"></li>
+  </ul>
+   <li class="list-group-item"><input type="file" name="update_image" > </li>
+  </ul>
 </div>
  
     <div class="act_forms">
    <!-- two buttons for update and delete   -->
-
+ <div class="update">
     <button class="btn btn-default btn-lg">
     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Submit</button>
-      
   </form>
+  </div>
+   <div class="delete">
   <form action="/deletegarment/<%= @garment.id%>" method=post>
   <input type="hidden" name="_method" value="delete">
     <button class="btn btn-default btn-lg">
     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove</button> 
    </form>
+   </div>
     </div>
   </div>
 

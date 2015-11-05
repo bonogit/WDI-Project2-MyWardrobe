@@ -10,7 +10,7 @@
 
   <div class="content_container">
     <div class="btn-group" role="group" aria-label="...">
-     <a href="" class="btn btn-default">Whole Wardrobe</a>
+     <a href="/wardrobe?category_id= " class="btn btn-default">Whole Wardrobe</a>
 
      <% @category.each do |cate|%>
      <a href="/wardrobe?category_id=<%= cate.id%>" class="btn btn-default"><%= cate.lvl1.capitalize%> </a>   

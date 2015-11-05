@@ -28,7 +28,8 @@ CREATE TABLE garments
   user_id VARCHAR(50),
   image_id VARCHAR(50),
   image_url VARCHAR(200),
-  category_id VARCHAR(50)
+  category_id INTEGER,
+  description VARCHAR(500)
 );
 
 INSERT INTO garments (garment_name,location,status,brand,size,buy_value,buy_currency,image_url)
@@ -37,6 +38,7 @@ INSERT INTO garments (garment_name,location,status,brand,size,buy_value,buy_curr
  VALUES ('shirt top 2','wardrobe','in stock','polo','m',50,'AUD','/images/120552695.jpg');
 INSERT INTO garments (garment_name,location,status,brand,size,buy_value,buy_currency,image_url)
  VALUES ('shirt top 3','drawer','in stock','levis','s',30,'AUD','/images/147988811.jpg');
+ALTER TABLE garments DROP COLUMN category_id; 
 
 CREATE TABLE categories
 (

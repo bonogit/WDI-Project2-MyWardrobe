@@ -19,6 +19,21 @@
   align-items: center;
   resize: both;
   overflow: auto;
+  font-style: italic;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}
+#the_logo{
+  font-style: italic;
+  font-size: 20px;
+  font-weight: bold;
+}
+#index_btn{
+  margin-top: 50px;
+  /*text-align: center;*/
+}
+#log_in{
+  margin-right: 30px;
 }
 #inner_cont {
   width: 50%;
@@ -109,6 +124,28 @@ img.cover {
   width: 40%;
   margin-left: 3%;
 }
+#multi_img {
+   border: solid gray 1px;
+   border-radius: 10px;
+   box-shadow:  0 0 0 1px #555, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+   width: 480px;
+   height: 120px;
+   margin-top: 20px;
+}
+#showgarment_details{
+ border: solid gray 1px;
+   border-radius: 10px;
+   box-shadow:  0 0 0 1px #555, 2px 1px 4px 3px rgba(10, 10, 0, 0.5);
+}
+#img_smallshow{
+  margin: 5px 4px;
+  border: 1px dashed #fff;
+  display: inline-block;
+}
+@imageupload{
+  display: inline-block;
+  width: 30px;
+}
 .act_forms{
   display: block;
 }
@@ -124,4 +161,10 @@ img.cover {
   width: 50%;
   margin-left: 15%;
    /*border: solid gray 1px;*/
+}
+.update{
+  display: inline-block;
+}
+.delete{
+  display: inline-block;
 }
