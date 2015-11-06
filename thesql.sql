@@ -27,9 +27,9 @@ CREATE TABLE garments
    record_date date,
   user_id VARCHAR(50),
   image_id VARCHAR(50),
-  image_url VARCHAR(200),
   category_id INTEGER,
-  description VARCHAR(500)
+  description VARCHAR(500),
+  image VARCHAR(500)
 );
 
 INSERT INTO garments (garment_name,location,status,brand,size,buy_value,buy_currency,image_url)

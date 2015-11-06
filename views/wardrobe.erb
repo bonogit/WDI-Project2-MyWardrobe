@@ -1,11 +1,11 @@
 <div class="bigcontainer">
 
   <div class="img_container">
-    <button class="btn btn-default" >Change</button>
-    <div class="item_placeholder" id="top_holder">Top</div>
-    <div class="item_placeholder" id="bottom_holder">Bottom</div>
-    <div class="item_placeholder" id="bag_holder">Bag</div>
-    <div class="item_placeholder" id="shoe_holder">Shoes</div>
+    <button class="btn btn-default" >Store Outfit</button>
+    <div class="item_placeholder ui-widget-header droppable" id="top_holder">Top</div>
+    <div class="item_placeholder ui-widget-header droppable" id="bottom_holder">Bottom</div>
+    <div class="item_placeholder ui-widget-header droppable" id="bag_holder">Bag</div>
+    <div class="item_placeholder ui-widget-header droppable" id="shoe_holder">Shoes</div>
   </div>
 
   <div class="content_container">
@@ -22,7 +22,7 @@
      <div id="display_imgs">
       <% @garments.each do |gar| %>
         <a href="/showgarment/<%= gar.id %>" title="<%= gar.garment_name%>" class="grid_display"> 
-        <img src=" <%= gar.image_url %>" style="width: 80px; height: 80px" class="img-rounded">
+        <img src=" <%= gar.image_url %>" class="img-rounded ui-widget-content draggable">
          </a>
        <% end %>
      </div>

@@ -26,6 +26,21 @@
     </label> <input type="text" name="location" value="<%= @garment.location%>"></li>
     <li class="list-group-item"><label class="col-sm-2 control-label">Brand: 
     </label><input type="text" name="brand" value="<%= @garment.brand%>"></li>
+
+   <li class="list-group-item"><label class="col-sm-2 control-label">Category: 
+    </label><select name="category_id" id="">
+       <% @category.each do |cat| %>
+       <% if cat.id == @garment.category_id %>
+     <option selected value="<%= cat.id %>">
+       <%= cat.lvl1%>
+      </option>
+     <% else %>
+      <option value="<%= cat.id%>"><%= cat.lvl1 %></option>
+     <% end %> 
+    <% end %> 
+    </select>
+    </li>
+ 
     <li class="list-group-item"><label class="col-sm-2 control-label">Size: 
     </label> <input type="text" name="size" value="<%= @garment.size%>"></li>
     <li class="list-group-item"><label class="col-sm-2 control-label">Status: 
@@ -38,9 +53,9 @@
     </label><input type="text" name="buy_date" value="<%= @garment.buy_date%>"></li>
     <li class="list-group-item"><label class="col-sm-2 control-label">Sold on:
     </label><input type="text" name="sold_value" value="<%= @garment.sold_value%>"></li>   
-  <li class="list-group-item"><label class="col-sm-2 control-label">Currency: 
+<!--   <li class="list-group-item"><label class="col-sm-2 control-label">Currency: 
     </label><input type="text" name="sold_currency" value="<%= @garment.sold_currency%>"></li>
-  </ul>
+  </ul> -->
    <li class="list-group-item"><input type="file" name="update_image" > </li>
   </ul>
 </div>

@@ -33,7 +33,7 @@ get '/' do
 end
 # show the whole wardrobe
 get '/wardrobe' do
-  # redirect to '/signin' unless log_in?
+  redirect to '/signin' unless log_in?
   @category = Category.all
   if params[:category_id].nil? || params[:category_id].empty?
      @garments = Garment.where(user_id: current_user.id)
@@ -44,15 +44,16 @@ get '/wardrobe' do
 end
 # show one garment
 get '/showgarment/:id' do
-  # redirect to '/signin' unless log_in?
+  redirect to '/signin' unless log_in?
   @garment = Garment.find(params[:id])
   erb :showgarment
 end
 
 # show update page
 get '/updategarment/showedit/:id' do
-    # redirect to '/signin' unless log_in?
+    redirect to '/signin' unless log_in?
   @garment = Garment.find(params[:id])
+  @category = Category.all
   erb :updategarment
 end
 
@@ -69,19 +70,22 @@ put '/updategarment/:id' do
   @gar.sold_value = params[:sold_value]
   @gar.sold_currency = params[:sold_currency]
   @gar.image = params[:update_image]
+  @gar.category_id = params[:category_id]
   @gar.save
  redirect to '/wardrobe'
 end
 
 # getting the add new form
-  # redirect to '/signin' unless log_in?
 get '/addgarment/form' do
-erb :addgarment
+  redirect to '/signin' unless log_in?
+ @category = Category.all
+ erb :addgarment
 end
 # add new garment
 post '/addgarment' do
 @addgarment = Garment.new
 @addgarment.garment_name = params[:garment_name]
+@addgarment.description = params[:description]
 @addgarment.location = params[:location]
 @addgarment.brand = params[:brand]
 @addgarment.size = params[:size]
@@ -94,6 +98,7 @@ post '/addgarment' do
 @addgarment.record_date = Date.today
 @addgarment.user_id = current_user.id
 @addgarment.image = params[:update_image]
+@addgarment.category_id = params[:category_id]
 @addgarment.save
 redirect to '/wardrobe'
 end

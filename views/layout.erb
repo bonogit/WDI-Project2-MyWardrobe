@@ -5,6 +5,26 @@
   <title>MY WARDROBE - WDI</title>
   <link rel='stylesheet' href='/stylesheets/main.css'>
   <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+<!-- for the image drap and drop boxes-->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( ".draggable" ).draggable();
+    $( ".droppable" ).droppable({
+      drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+          .find( "p" )
+            .html( "Dropped!" );
+      }
+    });
+  });
+  </script>
 
 </head>
 <body style="overflow: auto; paddding: 0; margin: 0; height: 100%;" id="body">
@@ -20,22 +40,22 @@
         <span class="icon-bar"></span>
       </button>
        <div id="the_logo">
-        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-queen" aria-hidden="true"></span>MY WARDROBE </a>
+        <a class="navbar-brand" href="/" style="font-family: 'Pacifico', cursive;"><span class="glyphicon glyphicon-queen" aria-hidden="true"></span>MY WARDROBE </a>
        </div>
         
       </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/wardrobe">WARDROBE MAKEOVER<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="/wardrobe">WARDROBE <span class="sr-only">(current)</span></a></li>
         <li><a href="/addgarment/form">NEW GARMENT</a></li>
       </ul>
 <% if log_in? %>
  <ul class="nav navbar-nav navbar-right">
-        <li>welcome: <%= current_user.username%></li>
+        <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= current_user.username%></li>
       <form action="/session" method="post">
         <input type="hidden" name="_method" value="delete">
-        <li ><button class="btn btn-default" style="width: 70px; height:25px; font-size:10px;">LOG OUT</button> </li>
+        <li ><button class="btn btn-default" style="width: 70px; height:25px; font-size:10px;margin-right: 10px">LOG OUT</button> </li>
       </form>    
   </ul>
 <% else%>
@@ -52,6 +72,6 @@
 
   <%= yield %>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ 
  <script src="/javascripts/bootstrap.min.js"></script>
 </body>
