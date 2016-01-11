@@ -45,7 +45,7 @@ Allows a user to
 - REMOVE a garment entry (Delete/Destroy)
 - Garment details to be stored 
 
-* ER models
+ER models
 
 User
 - ID (generated at creation time) (primary key)
