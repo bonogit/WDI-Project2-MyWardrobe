@@ -1,8 +1,8 @@
-==My wardrobe
+My wardrobe
 ===============================
 
 
-=== User Stories
+User Stories
 A web application for managing and tracking your clothes via a virtual wardrobe:
 - List all the garments that I own, nomatter what category
 - Mix and match dress set with my collections
@@ -10,13 +10,13 @@ A web application for managing and tracking your clothes via a virtual wardrobe:
 - Edit the details of each garment in the wardrob
 - Add/delete new garment to the collection
 
-=== What used:
+What used:
 - Ruby, Sinatra
 - Javascript Libraries: Jquery, Underscore
 - HTML, CSS
 - Postgresql
 
-===  Positives I took out of this project
+Positives I took out of this project
 
 Found gliffy to be a really useful wireframing tool, at least for my skill level and what I needed out of it.
 First experience on ER diagram for database design.
@@ -24,7 +24,7 @@ Learnt and used the data attribute which was invaluable in passing ID values
 Improved my understanding of select, filter, create, update and delete rows in database
 
 
-=== Struggles, and things to work on going forward
+Struggles, and things to work on going forward
 
 * Although I made some design notes at the outset (refer below), I was still 'fuzzy' on the app scope and how to go about it. Having a clear vision of the app is needed, so as not to hinder the design & development process.
 * Feature for dragging image is not working on heroku.
@@ -33,7 +33,7 @@ Improved my understanding of select, filter, create, update and delete rows in d
 * Still frustrated by a lack of visual design talent.
 * Get more comfortable with ActiveRecord syntax.
 
-=== Initial design notes
+Initial design notes
 
 * Personal virtual wardrobe
 
